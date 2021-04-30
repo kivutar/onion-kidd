@@ -37,7 +37,7 @@ end
 
 function fireball:die()
 	-- table.insert(EFFECTS, newNotif({uid=newUID(),x=self.x, y=self.y, text="100"}))
-	-- love.audio.play(SFX_explode)
+	-- SFX_explode:play()
 	-- table.insert(EFFECTS, newFireballexp({uid=newUID(),x=self.x,y=self.y}))
 	entity_remove(self)
 end

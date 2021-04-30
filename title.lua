@@ -9,17 +9,14 @@ function newTitle(n)
 end
 
 function title:update(dt)
-	local JOY_START  = love.keyboard.isDown("return")
-	if lutro ~= nil then
-		JOY_START  = love.joystick.isDown(1, RETRO_DEVICE_ID_JOYPAD_START)
-	end
+	local JOY_START = love.joystick.isDown(1, RETRO_DEVICE_ID_JOYPAD_START)
 
 	if JOY_START then
 		self.PRESSED = self.PRESSED + 1
 	end
 
 	if self.PRESSED == 1 then
-		love.audio.play(SFX_ok)
+		SFX_ok:play()
 		self.t = 60
 	end
 
@@ -41,7 +38,7 @@ function title:update(dt)
 			--table.insert(ENTITIES, CHAR2)
 			-- table.insert(ENTITIES, newCharacter({x=3*16,y=7*16,pad=3}))
 
-			love.audio.play(BGM)
+			BGM:play()
 		end
 	end
 end

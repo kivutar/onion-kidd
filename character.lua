@@ -71,7 +71,7 @@ function character:die()
 	self.dead_t = 240
 	self.yspeed = -1
 	self.stance = "die"
-	love.audio.play(SFX_die)
+	SFX_die:play()
 	--table.insert(ENTITIES, newGhost({x=self.x, y=self.y, pad=self.pad, skin=self.skin, direction=self.direction}))
 end
 
@@ -121,7 +121,7 @@ function character:update(dt)
 		if self.ungrounded_time < JUMP_FORGIVENESS then
 			self.y = self.y - 1
 			self.yspeed = -2.5
-			love.audio.play(SFX_jump)
+			SFX_jump:play()
 		end
 	end
 
@@ -138,7 +138,7 @@ function character:update(dt)
 	end
 
 	if self.DO_ATTACK == 1 then
-		love.audio.play(SFX_fireball)
+		SFX_fireball:play()
 		if self.direction == DIR_LEFT then
 			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
 		else
@@ -266,7 +266,7 @@ function character:on_collide(e1, e2, dx, dy)
 		if math.abs(dy) < math.abs(dx) and ((dy < 0 and self.yspeed > 0) or (dy > 0 and self.yspeed < 0)) then
 			self.yspeed = -1
 			self.y = self.y + dy
-			love.audio.play(SFX_ko)
+			SFX_ko:play()
 			e2.ko = 10
 		end
 
@@ -277,7 +277,7 @@ function character:on_collide(e1, e2, dx, dy)
 	elseif e2.type == ENT_CROCO then
 		self:die()
 	elseif e2.type == ENT_MONEY then
-		love.audio.play(SFX_gem)
+		SFX_gem:play()
 		--table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="200"}))
 		entity_remove(e2)
 	end

@@ -13,6 +13,7 @@ require "croco"
 require "fireball"
 require "money"
 require "dirt_part"
+require "slam"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -34,7 +35,6 @@ function love.load()
 	IMG_ground_right_down = love.graphics.newImage("assets/ground_right_down.png")
 	IMG_ground_left_up_down = love.graphics.newImage("assets/ground_left_up_down.png")
 	IMG_ground_right_up_down = love.graphics.newImage("assets/ground_right_up_down.png")
-
 	IMG_bg = love.graphics.newImage("assets/bg.png")
 	IMG_bouncer = love.graphics.newImage("assets/bouncer.png")
 	IMG_bridge = love.graphics.newImage("assets/bridge.png")
@@ -77,19 +77,19 @@ function love.load()
 	IMG_croco_ghost_left = love.graphics.newImage("assets/croco_ghost_left.png")
 	IMG_croco_ghost_right = love.graphics.newImage("assets/croco_ghost_right.png")
 
-	BGM_bgm = love.audio.newSource("assets/medallion.ogg", "static")
+	BGM_bgm = newSource("assets/medallion.ogg", "stream")
 
-	SFX_jump = love.audio.newSource("assets/jump.wav", "static")
-	SFX_explode = love.audio.newSource("assets/explode.wav", "static")
-	SFX_ko = love.audio.newSource("assets/ko.wav", "static")
-	SFX_fireball = love.audio.newSource("assets/fireball.wav", "static")
-	SFX_enemy_die = love.audio.newSource("assets/enemy_die.wav", "static")
-	SFX_dirt_die = love.audio.newSource("assets/dirt_die.wav", "static")
-	SFX_die = love.audio.newSource("assets/die.wav", "static")
-	SFX_gem = love.audio.newSource("assets/gem.wav", "static")
-	SFX_ok = love.audio.newSource("assets/ok.wav", "static")
-	SFX_cross = love.audio.newSource("assets/cross.wav", "static")
-	SFX_revive = love.audio.newSource("assets/revive.wav", "static")
+	SFX_jump = newSource("assets/jump.wav", "static")
+	SFX_explode = newSource("assets/explode.wav", "static")
+	SFX_ko = newSource("assets/ko.wav", "static")
+	SFX_fireball = newSource("assets/fireball.wav", "static")
+	SFX_enemy_die = newSource("assets/enemy_die.wav", "static")
+	SFX_dirt_die = newSource("assets/dirt_die.wav", "static")
+	SFX_die = newSource("assets/die.wav", "static")
+	SFX_gem = newSource("assets/gem.wav", "static")
+	SFX_ok = newSource("assets/ok.wav", "static")
+	SFX_cross = newSource("assets/cross.wav", "static")
+	SFX_revive = newSource("assets/revive.wav", "static")
 
 	FNT_points = love.graphics.newImageFont("assets/points.png", "0123456789")
 	FNT_letters = love.graphics.newImageFont("assets/letters.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.!?")
