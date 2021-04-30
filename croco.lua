@@ -58,13 +58,6 @@ function croco:update(dt)
 		return
 	end
 
-	if self.captured then
-		self.stance = "captured"
-		self.anim = self.animations[self.stance][self.direction]
-		self.anim:update(dt)
-		return
-	end
-
 	local otg = self:on_the_ground()
 
 	self.xspeed = self.xspeed + self.xaccel

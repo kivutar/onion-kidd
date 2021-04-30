@@ -10,8 +10,6 @@ function newFireball(n)
 	else
 		n.xspeed = 5
 	end
-	n.child = nil
-	n.childuid = nil
 
 	n.anim = newAnimation(IMG_fireball, 16, 16, 1, 10)
 
@@ -58,7 +56,6 @@ function fireball:serialize()
 		x = self.x,
 		y = self.y,
 		xspeed = self.xspeed,
-		childuid = self.childuid,
 	}
 end
 
@@ -69,5 +66,4 @@ function fireball:unserialize(n)
 	self.x = n.x
 	self.y = n.y
 	self.xspeed = n.xspeed
-	self.childuid = n.childuid
 end

@@ -15,7 +15,6 @@ function star:draw()
 end
 
 function star:die()
-	--table.insert(EFFECTS, newNotif({uid=newUID(),x=self.x, y=self.y, text="100"}))
 	SFX_dirt_die:play()
 	table.insert(ENTITIES, newMoney({uid=newUID(),x=self.x,y=self.y}))
 	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
