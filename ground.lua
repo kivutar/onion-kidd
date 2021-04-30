@@ -7,9 +7,21 @@ function newGround(n)
 	n.height = 16
 	n.img = IMG_ground
 
-	local s = solid_at(n.x, n.y-1)
+	local up = map_get(n.y/16, n.x/16+1)
+	local down = map_get(n.y/16+2, n.x/16+1)
+	local left = map_get(n.y/16+1, n.x/16)
+	local right = map_get(n.y/16+1, n.x/16+2)
 
-	if not s or s.type ~= ENT_GROUND then n.img = IMG_ground_top end
+	if left ~= nil and left ~= 1 then n.img = IMG_ground_left end
+	if right ~= nil and right ~= 1 then n.img = IMG_ground_right end
+	if down ~= nil and down ~= 1 then n.img = IMG_ground_down end
+	if up ~= nil and up ~= 1 then n.img = IMG_ground_up end
+
+	if up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_up_down end
+	if left ~= nil and left ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_left_down end
+	if right ~= nil and right ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_right_down end
+	if left ~= nil and left ~= 1 and up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_left_up_down end
+	if right ~= nil and right ~= 1 and up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_right_up_down end
 
 	return setmetatable(n, ground)
 end

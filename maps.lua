@@ -17,6 +17,12 @@ function load_map(m)
 	end
 end
 
+function map_get(y, x)
+	if x < 0 or x > 20 then return nil end
+	if y < 0 or y > #MAP then return nil end
+	return MAP[y][x]
+end
+
 MAP_plain = {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

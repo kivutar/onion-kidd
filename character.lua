@@ -5,7 +5,7 @@ JUMP_FORGIVENESS = 8
 
 function newCharacter(n)
 	n.type = ENT_CHARACTER
-	n.width = 12
+	n.width = 10
 	n.height = 16
 	n.xspeed = 0
 	n.yspeed = 0
@@ -66,11 +66,6 @@ function character:on_the_ground()
 		or solid_at(self.x + self.width - 1, self.y + self.height)
 end
 
-function character:on_a_bridge()
-	return bridge_at(self.x + 1, self.y + self.height)
-		or bridge_at(self.x + self.width - 1, self.y + self.height)
-end
-
 function character:die()
 	self.dead = true
 	self.dead_t = 240
@@ -97,7 +92,6 @@ function character:update(dt)
 	end
 
 	local otg = self:on_the_ground()
-	local oab = self:on_a_bridge()
 
 	local JOY_LEFT  = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_LEFT)
 	local JOY_RIGHT = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_RIGHT)
@@ -108,7 +102,7 @@ function character:update(dt)
 	-- gravity
 	self.yspeed = self.yspeed + self.yaccel
 	if (self.yspeed > 3) then self.yspeed = 3 end
-	if (otg or oab) and self.yspeed > 0 then self.yspeed = 0 end
+	if otg and self.yspeed > 0 then self.yspeed = 0 end
 
 	-- jumping
 	if JOY_B then
@@ -117,7 +111,7 @@ function character:update(dt)
 		self.DO_JUMP = 0
 	end
 
-	if otg or oab then
+	if otg then
 		self.ungrounded_time = 0
 	else
 		self.ungrounded_time = self.ungrounded_time + 1
@@ -135,18 +129,6 @@ function character:update(dt)
 	if self.DO_JUMP > 0 and self.DO_JUMP <= 40 and self.yspeed < 0 then
 		self.yspeed =  self.yspeed - 0.1
 	end
-
-	-- jumping down
-	-- if self.DO_JUMP == 1 and JOY_DOWN then
-	-- 	if oab then
-	-- 		self.y = self.y + 3
-	-- 		love.audio.play(SFX_jump)
-	-- 	elseif otg then
-	-- 		self.y = self.y - 1
-	-- 		self.yspeed = -3.75
-	-- 		love.audio.play(SFX_jump)
-	-- 	end
-	-- end
 
 	-- attacking
 	if JOY_A then
@@ -191,7 +173,7 @@ function character:update(dt)
 	-- decelerating
 	if  ((not JOY_RIGHT and self.xspeed > 0)
 	or  (not JOY_LEFT  and self.xspeed < 0))
-	and (otg or oab)
+	and otg
 	then
 		if self.xspeed > 0 then
 			self.xspeed = self.xspeed - 10
@@ -209,7 +191,7 @@ function character:update(dt)
 	-- air friction
 	if  ((not JOY_RIGHT and self.xspeed > 0)
 	or  (not JOY_LEFT  and self.xspeed < 0))
-	and not otg and not oab
+	and not otg
 	then
 		if self.xspeed > 0 then
 			self.xspeed = self.xspeed - 0.05
@@ -231,7 +213,7 @@ function character:update(dt)
 		self.stance = "ko"
 	elseif self.DO_ATTACK > 0 and self.DO_ATTACK < 30 then
 		self.stance = "attack"
-	elseif otg or oab then
+	elseif otg then
 		if self.xspeed == 0 then
 			self.stance = "stand"
 		else
@@ -264,7 +246,7 @@ function character:update(dt)
 end
 
 function character:draw()
-	self.anim:draw(self.x-6, self.y-8)
+	self.anim:draw(self.x-7, self.y-8)
 end
 
 function character:on_collide(e1, e2, dx, dy)
