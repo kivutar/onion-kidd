@@ -6,9 +6,9 @@ function newFireball(n)
 	n.width = 16
 	n.height = 16
 	if n.direction == DIR_LEFT then
-		n.xspeed = -4
+		n.xspeed = -5
 	else
-		n.xspeed = 4
+		n.xspeed = 5
 	end
 	n.child = nil
 	n.childuid = nil

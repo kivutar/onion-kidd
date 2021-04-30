@@ -17,7 +17,10 @@ end
 function dirt:die()
 	--table.insert(EFFECTS, newNotif({uid=newUID(),x=self.x, y=self.y, text="100"}))
 	love.audio.play(SFX_dirt_die)
-	--table.insert(EFFECTS, newFireballexp({uid=newUID(),x=self.x,y=self.y}))
+	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
+	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y,xspeed=0.5}))
+	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
+	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
 	solid_remove(self)
 end
 

@@ -126,14 +126,14 @@ function character:update(dt)
 	if self.DO_JUMP == 1 and not JOY_DOWN then
 		if self.ungrounded_time < JUMP_FORGIVENESS then
 			self.y = self.y - 1
-			self.yspeed = -3.5
+			self.yspeed = -2.5
 			love.audio.play(SFX_jump)
 		end
 	end
 
 	-- variable jump height
-	if self.DO_JUMP > 1 and self.DO_JUMP <= 30 and self.yspeed < 0 then
-		self.yspeed =  self.yspeed - 0.075
+	if self.DO_JUMP > 0 and self.DO_JUMP <= 40 and self.yspeed < 0 then
+		self.yspeed =  self.yspeed - 0.1
 	end
 
 	-- jumping down

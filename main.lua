@@ -12,6 +12,7 @@ require "title"
 require "croco"
 require "fireball"
 require "money"
+require "dirt_part"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -33,6 +34,7 @@ function love.load()
 	IMG_money = love.graphics.newImage("assets/money.png")
 	IMG_star = love.graphics.newImage("assets/star.png")
 	IMG_dirt = love.graphics.newImage("assets/dirt.png")
+	IMG_dirt_part = love.graphics.newImage("assets/dirt_part.png")
 
 	IMG_turnip_stand_left = love.graphics.newImage("assets/turnip_stand_left.png")
 	IMG_turnip_stand_right = love.graphics.newImage("assets/turnip_stand_right.png")
@@ -135,14 +137,12 @@ end
 
 function love.reset()
 	STATE = {}
-	SHADOWS = {}
 	SOLIDS = {}
 	ENTITIES = {}
 	EFFECTS = {}
 	PHASE = nil
 	STAGE = 1
 	CHAR1 = nil
-	CHAR2 = nil
 	BGM = nil
 	LAST_UID = 0
 	CAMERA = {
