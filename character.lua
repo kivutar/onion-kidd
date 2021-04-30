@@ -142,7 +142,7 @@ function character:update(dt)
 		if self.direction == DIR_LEFT then
 			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
 		else
-			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y,direction=self.direction}))
+			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16-8,y=self.y,direction=self.direction}))
 		end
 	end
 
