@@ -140,9 +140,9 @@ function character:update(dt)
 	if self.DO_ATTACK == 1 then
 		SFX_fireball:play()
 		if self.direction == DIR_LEFT then
-			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
+			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
 		else
-			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16-8,y=self.y,direction=self.direction}))
+			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
 		end
 	end
 
@@ -274,7 +274,7 @@ function character:on_collide(e1, e2, dx, dy)
 			self.xspeed = 0
 			self.x = self.x + dx/2
 		end
-	elseif e2.type == ENT_CROCO then
+	elseif e2.type == ENT_CROCO or e2.type == ENT_BIRD then
 		self:die()
 	elseif e2.type == ENT_MONEY then
 		SFX_gem:play()

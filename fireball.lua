@@ -3,8 +3,8 @@ fireball.__index = fireball
 
 function newFireball(n)
 	n.type = ENT_FIREBALL
-	n.width = 16
-	n.height = 16
+	n.width = 8
+	n.height = 8
 	if n.direction == DIR_LEFT then
 		n.xspeed = -5
 	else
@@ -30,7 +30,7 @@ function fireball:update(dt)
 end
 
 function fireball:draw()
-	self.anim:draw(self.x, self.y)
+	self.anim:draw(self.x-4, self.y-4)
 end
 
 function fireball:die()
