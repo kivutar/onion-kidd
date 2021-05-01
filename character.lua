@@ -72,7 +72,6 @@ function character:die()
 	self.yspeed = -1
 	self.stance = "die"
 	SFX_die:play()
-	--table.insert(ENTITIES, newGhost({x=self.x, y=self.y, pad=self.pad, skin=self.skin, direction=self.direction}))
 end
 
 function character:update(dt)
@@ -86,7 +85,21 @@ function character:update(dt)
 		end
 		self.anim = self.animations[self.stance][self.direction]
 		self.anim:update(dt)
-		if self.y > CAMERA.y+SCREEN_HEIGHT then entity_remove(self) end
+		if self.y > CAMERA.y+SCREEN_HEIGHT then
+			entity_remove(self)
+			CAMERA = {
+				x = 0,
+				y = 0,
+			}
+			BGM:stop()
+			STAGE = 1
+			ENTITIES = {}
+			SOLIDS = {}
+			EFFECTS = {}
+			MAP = {}
+			LAST_UID = 0
+			table.insert(ENTITIES, newTitle({}))
+		end
 		self.dead_t = self.dead_t - 1
 		return
 	end

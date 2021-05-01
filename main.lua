@@ -24,7 +24,6 @@ end
 function love.load()
 	love.graphics.setBackgroundColor(0, 0, 0)
 	love.graphics.setDefaultFilter("nearest", "nearest")
-	math.randomseed(os.time())
 
 	IMG_ground = love.graphics.newImage("assets/ground.png")
 	IMG_ground_up = love.graphics.newImage("assets/ground_up.png")
