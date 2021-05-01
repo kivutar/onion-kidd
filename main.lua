@@ -14,6 +14,7 @@ require "fireball"
 require "money"
 require "dirt_part"
 require "slam"
+require "bird"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -76,6 +77,11 @@ function love.load()
 	IMG_croco_die_right = love.graphics.newImage("assets/croco_die_right.png")
 	IMG_croco_ghost_left = love.graphics.newImage("assets/croco_ghost_left.png")
 	IMG_croco_ghost_right = love.graphics.newImage("assets/croco_ghost_right.png")
+
+	IMG_bird_fly_left = love.graphics.newImage("assets/bird_fly_left.png")
+	IMG_bird_fly_right = love.graphics.newImage("assets/bird_fly_right.png")
+	IMG_bird_die_left = love.graphics.newImage("assets/bird_die_left.png")
+	IMG_bird_die_right = love.graphics.newImage("assets/bird_die_right.png")
 
 	BGM_bgm = newSource("assets/medallion.ogg", "stream")
 
