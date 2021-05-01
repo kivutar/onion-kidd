@@ -274,7 +274,7 @@ function character:on_collide(e1, e2, dx, dy)
 			self.xspeed = 0
 			self.x = self.x + dx/2
 		end
-	elseif e2.type == ENT_CROCO or e2.type == ENT_BIRD then
+	elseif (e2.type == ENT_CROCO or e2.type == ENT_BIRD) and not e2.dead then
 		self:die()
 	elseif e2.type == ENT_MONEY then
 		SFX_gem:play()
