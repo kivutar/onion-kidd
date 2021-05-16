@@ -255,6 +255,7 @@ function character:update(dt)
 	if newcamy > CAMERA.y then
 		CAMERA.y = self.y - SCREEN_HEIGHT/2 + self.height/2
 		if CAMERA.y <= 0 then CAMERA.y = 0 end
+		if CAMERA.y >= #MAP*16 - SCREEN_HEIGHT then CAMERA.y = #MAP*16 - SCREEN_HEIGHT end
 	end
 end
 
