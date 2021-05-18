@@ -38,6 +38,10 @@ function bird:die()
 	self.yspeed = -1
 	self.stance = "die"
 	SFX_enemy_die:play()
+	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
+	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x+8,y=self.y,xspeed=0.5}))
+	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
+	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
 end
 
 function bird:update(dt)

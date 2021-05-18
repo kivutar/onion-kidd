@@ -160,9 +160,9 @@ function character:update(dt)
 			end
 		else
 			if self.direction == DIR_LEFT then
-				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
+				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
 			else
-				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
+				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x+self.width,y=self.y,direction=self.direction}))
 			end
 		end
 	end

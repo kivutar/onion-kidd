@@ -19,6 +19,7 @@ require "powerblock"
 require "powerup_fireball"
 require "punch"
 require "notif"
+require "bird_part"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -48,6 +49,7 @@ function love.load()
 	IMG_star = love.graphics.newImage("assets/star.png")
 	IMG_dirt = love.graphics.newImage("assets/dirt.png")
 	IMG_dirt_part = love.graphics.newImage("assets/dirt_part.png")
+	IMG_bird_part = love.graphics.newImage("assets/bird_part.png")
 	IMG_powerblock = love.graphics.newImage("assets/powerblock.png")
 	IMG_powerup_fireball = love.graphics.newImage("assets/powerup_fireball.png")
 
