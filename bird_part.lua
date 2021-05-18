@@ -7,6 +7,7 @@ function newBirdPart(n)
 	n.height = 8
 	n.yspeed = -2
 	n.yaccel = 0.1
+	n.t = 0
 
 	n.anim = newAnimation(IMG_bird_part, 8, 8, 1, 10)
 
@@ -14,6 +15,7 @@ function newBirdPart(n)
 end
 
 function bird_part:update(dt)
+	self.t = self.t + 1
 	self.anim:update(dt)
 	self.yspeed = self.yspeed + self.yaccel
 	self.x = self.x + self.xspeed
@@ -22,7 +24,9 @@ function bird_part:update(dt)
 end
 
 function bird_part:draw()
-	self.anim:draw(self.x, self.y)
+	if self.t % 2 == 0 then
+		self.anim:draw(self.x, self.y)
+	end
 end
 
 function bird_part:serialize()

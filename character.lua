@@ -159,6 +159,7 @@ function character:update(dt)
 				table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
 			end
 		else
+			SFX_punch:play()
 			if self.direction == DIR_LEFT then
 				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
 			else
