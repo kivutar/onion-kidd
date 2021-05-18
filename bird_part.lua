@@ -6,7 +6,7 @@ function newBirdPart(n)
 	n.width = 8
 	n.height = 8
 	n.yspeed = -2
-	n.yaccel = 0.2
+	n.yaccel = 0.1
 
 	n.anim = newAnimation(IMG_bird_part, 8, 8, 1, 10)
 
