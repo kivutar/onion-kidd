@@ -18,6 +18,7 @@ require "bird"
 require "powerblock"
 require "powerup_fireball"
 require "punch"
+require "notif"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH

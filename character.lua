@@ -300,10 +300,13 @@ function character:on_collide(e1, e2, dx, dy)
 		self:die()
 	elseif e2.type == ENT_MONEY then
 		SFX_gem:play()
-		--table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="200"}))
+		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="100"}))
+		POINTS = POINTS + 100
 		entity_remove(e2)
 	elseif e2.type == ENT_POWERUP_FIREBALL then
 		SFX_powerup:play()
+		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="500"}))
+		POINTS = POINTS + 500
 		entity_remove(e2)
 		HAS_FIREBALL = true
 	end

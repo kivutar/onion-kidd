@@ -17,6 +17,7 @@ BGM = nil
 LAST_UID = 0
 
 HAS_FIREBALL = false
+POINTS = 0
 
 RETRO_DEVICE_ID_JOYPAD_B        = 1
 RETRO_DEVICE_ID_JOYPAD_Y        = 2

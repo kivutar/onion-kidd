@@ -83,6 +83,8 @@ function bird:on_collide(e1, e2, dx, dy)
 			self.xspeed = -self.xspeed
 		end
 	elseif e2.type == ENT_FIREBALL or e2.type == ENT_PUNCH then
+		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="200"}))
+		POINTS = POINTS + 200
 		self:die()
 	end
 end
