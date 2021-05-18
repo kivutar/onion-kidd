@@ -151,11 +151,19 @@ function character:update(dt)
 	end
 
 	if self.DO_ATTACK == 1 then
-		SFX_fireball:play()
-		if self.direction == DIR_LEFT then
-			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
+		if HAS_FIREBALL then
+			SFX_fireball:play()
+			if self.direction == DIR_LEFT then
+				table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
+			else
+				table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
+			end
 		else
-			table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
+			if self.direction == DIR_LEFT then
+				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
+			else
+				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
+			end
 		end
 	end
 
@@ -267,7 +275,7 @@ function character:on_collide(e1, e2, dx, dy)
 
 	if self.dead then return end
 
-	if e2.type == ENT_GROUND or e2.type == ENT_STAR or e2.type == ENT_DIRT then
+	if e2.type == ENT_GROUND or e2.type == ENT_STAR or e2.type == ENT_DIRT or e2.type == ENT_POWERBLOCK then
 		if math.abs(dy) < math.abs(dx) and ((dy < 0 and self.yspeed > 0) or (dy > 0 and self.yspeed < 0)) then
 			self.yspeed = 0
 			self.y = self.y + dy
@@ -294,6 +302,10 @@ function character:on_collide(e1, e2, dx, dy)
 		SFX_gem:play()
 		--table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="200"}))
 		entity_remove(e2)
+	elseif e2.type == ENT_POWERUP_FIREBALL then
+		SFX_powerup:play()
+		entity_remove(e2)
+		HAS_FIREBALL = true
 	end
 end
 

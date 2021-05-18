@@ -15,6 +15,9 @@ require "money"
 require "dirt_part"
 require "slam"
 require "bird"
+require "powerblock"
+require "powerup_fireball"
+require "punch"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -44,6 +47,8 @@ function love.load()
 	IMG_star = love.graphics.newImage("assets/star.png")
 	IMG_dirt = love.graphics.newImage("assets/dirt.png")
 	IMG_dirt_part = love.graphics.newImage("assets/dirt_part.png")
+	IMG_powerblock = love.graphics.newImage("assets/powerblock.png")
+	IMG_powerup_fireball = love.graphics.newImage("assets/powerup_fireball.png")
 
 	IMG_turnip_stand_left = love.graphics.newImage("assets/turnip_stand_left.png")
 	IMG_turnip_stand_right = love.graphics.newImage("assets/turnip_stand_right.png")
@@ -95,6 +100,7 @@ function love.load()
 	SFX_ok = newSource("assets/ok.wav", "static")
 	SFX_cross = newSource("assets/cross.wav", "static")
 	SFX_revive = newSource("assets/revive.wav", "static")
+	SFX_powerup = newSource("assets/powerup.wav", "static")
 
 	FNT_points = love.graphics.newImageFont("assets/points.png", "0123456789")
 	FNT_letters = love.graphics.newImageFont("assets/letters.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.!?")

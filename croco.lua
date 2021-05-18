@@ -81,7 +81,7 @@ function croco:on_collide(e1, e2, dx, dy)
 
 	if self.dead then return end
 
-	if e2.type == ENT_GROUND or e2.type == ENT_DIRT or e2.type == ENT_STAR then
+	if e2.type == ENT_GROUND or e2.type == ENT_DIRT or e2.type == ENT_STAR or e2.type == ENT_POWERBLOCK then
 		if math.abs(dy) < math.abs(dx) and ((dy < 0 and self.yspeed > 0) or (dy > 0 and self.yspeed < 0)) then
 			self.yspeed = 0
 			self.y = self.y + dy
@@ -93,7 +93,7 @@ function croco:on_collide(e1, e2, dx, dy)
 			elseif self.direction == DIR_LEFT then self.direction = DIR_RIGHT end
 			self.xspeed = -self.xspeed
 		end
-	elseif e2.type == ENT_FIREBALL then
+	elseif e2.type == ENT_FIREBALL or e2.type == ENT_PUNCH then
 		self:die()
 	end
 end

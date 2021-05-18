@@ -43,7 +43,7 @@ end
 function fireball:on_collide(e1, e2, dx, dy)
 	if e2.type == ENT_GROUND then
 		self:die()
-	elseif e2.type == ENT_DIRT or e2.type == ENT_STAR then
+	elseif e2.type == ENT_DIRT or e2.type == ENT_STAR or e2.type == ENT_POWERBLOCK then
 		e2:die()
 	end
 end
