@@ -160,6 +160,7 @@ function love.draw()
 end
 
 function love.reset()
+	print("reset")
 	STATE = {}
 	SOLIDS = {}
 	ENTITIES = {}
@@ -167,8 +168,11 @@ function love.reset()
 	PHASE = nil
 	STAGE = 1
 	CHAR1 = nil
+	BGM:stop()
 	BGM = nil
 	LAST_UID = 0
+	HAS_FIREBALL = false
+	POINTS = 0
 	CAMERA = {
 		x = 0,
 		y = 0,

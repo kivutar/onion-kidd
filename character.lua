@@ -98,6 +98,8 @@ function character:update(dt)
 			EFFECTS = {}
 			MAP = {}
 			LAST_UID = 0
+			HAS_FIREBALL = false
+			POINTS = 0
 			table.insert(ENTITIES, newTitle({}))
 		end
 		self.dead_t = self.dead_t - 1
