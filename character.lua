@@ -54,6 +54,37 @@ function newCharacter(n)
 				[DIR_RIGHT] = newAnimation(IMG_turnip_die_right, 24, 24, 1, 10)
 			},
 		}
+	elseif n.skin == "girl" then
+		n.animations = {
+			stand = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_stand_left,  24, 24, 2, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_stand_right, 24, 24, 2, 10)
+			},
+			run = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_run_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_run_right, 24, 24, 1, 10)
+			},
+			attack = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_attack_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_attack_right, 24, 24, 1, 10)
+			},
+			jump = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_jump_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_jump_right, 24, 24, 1, 10)
+			},
+			fall = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_fall_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_fall_right, 24, 24, 1, 10)
+			},
+			ko = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_ko_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_ko_right, 24, 24, 1, 10)
+			},
+			die = {
+				[DIR_LEFT]  = newAnimation(IMG_girl_die_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = newAnimation(IMG_girl_die_right, 24, 24, 1, 10)
+			},
+		}
 	end
 
 	n.anim = n.animations[n.stance][n.direction]
