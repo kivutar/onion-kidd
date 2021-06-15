@@ -1,7 +1,7 @@
 local notif = {}
 notif.__index = notif
 
-function newNotif(n)
+function NewNotif(n)
 	n.type = ENT_NOTIF
 	n.y = n.y - 16
 	n.yspeed = -2

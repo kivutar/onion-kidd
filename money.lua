@@ -1,7 +1,7 @@
 local money = {}
 money.__index = money
 
-function newMoney(n)
+function NewMoney(n)
 	n.type = ENT_MONEY
 	n.width = 16
 	n.height = 16

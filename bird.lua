@@ -1,7 +1,7 @@
 local bird = {}
 bird.__index = bird
 
-function newBird(n)
+function NewBird(n)
 	n.type = ENT_BIRD
 	n.width = 28
 	n.height = 16
@@ -19,12 +19,12 @@ function newBird(n)
 
 	n.animations = {
 		fly = {
-			[DIR_LEFT]  = newAnimation(IMG_bird_fly_left,  28, 16, 1, 10),
-			[DIR_RIGHT] = newAnimation(IMG_bird_fly_right, 28, 16, 1, 10)
+			[DIR_LEFT]  = NewAnimation(IMG_bird_fly_left,  28, 16, 1, 10),
+			[DIR_RIGHT] = NewAnimation(IMG_bird_fly_right, 28, 16, 1, 10)
 		},
 		die = {
-			[DIR_LEFT]  = newAnimation(IMG_bird_die_left,  28, 16, 1, 10),
-			[DIR_RIGHT] = newAnimation(IMG_bird_die_right, 28, 16, 1, 10)
+			[DIR_LEFT]  = NewAnimation(IMG_bird_die_left,  28, 16, 1, 10),
+			[DIR_RIGHT] = NewAnimation(IMG_bird_die_right, 28, 16, 1, 10)
 		},
 	}
 
@@ -38,10 +38,10 @@ function bird:die()
 	self.yspeed = -1
 	self.stance = "die"
 	SFX_enemy_die:play()
-	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
-	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x+8,y=self.y,xspeed=0.5}))
-	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
-	table.insert(EFFECTS, newBirdPart({uid=newUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
+	table.insert(EFFECTS, NewBirdPart({uid=NewUID(),x=self.x,y=self.y,xspeed=-0.5}))
+	table.insert(EFFECTS, NewBirdPart({uid=NewUID(),x=self.x+8,y=self.y,xspeed=0.5}))
+	table.insert(EFFECTS, NewBirdPart({uid=NewUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
+	table.insert(EFFECTS, NewBirdPart({uid=NewUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
 end
 
 function bird:update(dt)
@@ -87,7 +87,7 @@ function bird:on_collide(e1, e2, dx, dy)
 			self.xspeed = -self.xspeed
 		end
 	elseif e2.type == ENT_FIREBALL or e2.type == ENT_PUNCH then
-		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="200"}))
+		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="200"}))
 		POINTS = POINTS + 200
 		self:die()
 	end

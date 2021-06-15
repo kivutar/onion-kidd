@@ -1,7 +1,7 @@
 local bird_part = {}
 bird_part.__index = bird_part
 
-function newBirdPart(n)
+function NewBirdPart(n)
 	n.type = ENT_BIRD_PART
 	n.width = 8
 	n.height = 8
@@ -9,7 +9,7 @@ function newBirdPart(n)
 	n.yaccel = 0.1
 	n.t = 0
 
-	n.anim = newAnimation(IMG_bird_part, 8, 8, 1, 10)
+	n.anim = NewAnimation(IMG_bird_part, 8, 8, 1, 10)
 
 	return setmetatable(n, bird_part)
 end

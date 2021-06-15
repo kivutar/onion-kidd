@@ -1,7 +1,7 @@
 local animation = {}
 animation.__index = animation
 
-function newAnimation(image, width, height, period, speed)
+function NewAnimation(image, width, height, period, speed)
 	local a = {}
 	a.image = image
 	a.timer = 0

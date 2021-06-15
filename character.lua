@@ -3,7 +3,7 @@ character.__index = character
 
 JUMP_FORGIVENESS = 8
 
-function newCharacter(n)
+function NewCharacter(n)
 	n.type = ENT_CHARACTER
 	n.width = 10
 	n.height = 16
@@ -21,68 +21,68 @@ function newCharacter(n)
 	n.dead = false
 	n.ungrounded_time = 0
 
-	n.skin = "turnip"
+	n.skin = "girl"
 
 	if n.skin == "turnip" then
 		n.animations = {
 			stand = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_stand_left,  24, 24, 2, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_stand_right, 24, 24, 2, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_stand_left,  24, 24, 2, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_stand_right, 24, 24, 2, 10)
 			},
 			run = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_run_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_run_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_run_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_run_right, 24, 24, 1, 10)
 			},
 			attack = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_attack_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_attack_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_attack_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_attack_right, 24, 24, 1, 10)
 			},
 			jump = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_jump_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_jump_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_jump_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_jump_right, 24, 24, 1, 10)
 			},
 			fall = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_fall_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_fall_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_fall_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_fall_right, 24, 24, 1, 10)
 			},
 			ko = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_ko_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_ko_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_ko_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_ko_right, 24, 24, 1, 10)
 			},
 			die = {
-				[DIR_LEFT]  = newAnimation(IMG_turnip_die_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_turnip_die_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_turnip_die_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_turnip_die_right, 24, 24, 1, 10)
 			},
 		}
 	elseif n.skin == "girl" then
 		n.animations = {
 			stand = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_stand_left,  24, 24, 2, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_stand_right, 24, 24, 2, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_stand_left,  24, 24, 2, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_stand_right, 24, 24, 2, 10)
 			},
 			run = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_run_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_run_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_run_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_run_right, 24, 24, 1, 10)
 			},
 			attack = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_attack_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_attack_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_attack_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_attack_right, 24, 24, 1, 10)
 			},
 			jump = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_jump_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_jump_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_jump_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_jump_right, 24, 24, 1, 10)
 			},
 			fall = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_fall_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_fall_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_fall_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_fall_right, 24, 24, 1, 10)
 			},
 			ko = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_ko_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_ko_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_ko_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_ko_right, 24, 24, 1, 10)
 			},
 			die = {
-				[DIR_LEFT]  = newAnimation(IMG_girl_die_left,  24, 24, 1, 10),
-				[DIR_RIGHT] = newAnimation(IMG_girl_die_right, 24, 24, 1, 10)
+				[DIR_LEFT]  = NewAnimation(IMG_girl_die_left,  24, 24, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_girl_die_right, 24, 24, 1, 10)
 			},
 		}
 	end
@@ -131,7 +131,7 @@ function character:update(dt)
 			LAST_UID = 0
 			HAS_FIREBALL = false
 			POINTS = 0
-			table.insert(ENTITIES, newTitle({}))
+			table.insert(ENTITIES, NewTitle({}))
 		end
 		self.dead_t = self.dead_t - 1
 		return
@@ -187,16 +187,16 @@ function character:update(dt)
 		if HAS_FIREBALL then
 			SFX_fireball:play()
 			if self.direction == DIR_LEFT then
-				table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
+				table.insert(ENTITIES, NewFireball({uid=NewUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
 			else
-				table.insert(ENTITIES, newFireball({uid=newUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
+				table.insert(ENTITIES, NewFireball({uid=NewUID(),x=self.x+16,y=self.y+4,direction=self.direction}))
 			end
 		else
 			SFX_punch:play()
 			if self.direction == DIR_LEFT then
-				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x-16,y=self.y,direction=self.direction}))
+				table.insert(ENTITIES, newPunch({uid=NewUID(),x=self.x-16,y=self.y,direction=self.direction}))
 			else
-				table.insert(ENTITIES, newPunch({uid=newUID(),x=self.x+self.width,y=self.y,direction=self.direction}))
+				table.insert(ENTITIES, newPunch({uid=NewUID(),x=self.x+self.width,y=self.y,direction=self.direction}))
 			end
 		end
 	end
@@ -334,12 +334,12 @@ function character:on_collide(e1, e2, dx, dy)
 		self:die()
 	elseif e2.type == ENT_MONEY then
 		SFX_gem:play()
-		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="100"}))
+		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="100"}))
 		POINTS = POINTS + 100
 		entity_remove(e2)
 	elseif e2.type == ENT_POWERUP_FIREBALL then
 		SFX_powerup:play()
-		table.insert(EFFECTS, newNotif({uid=newUID(),x=e2.x, y=e2.y, text="500"}))
+		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="500"}))
 		POINTS = POINTS + 500
 		entity_remove(e2)
 		HAS_FIREBALL = true

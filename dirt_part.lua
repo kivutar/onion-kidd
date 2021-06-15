@@ -1,7 +1,7 @@
 local dirt_part = {}
 dirt_part.__index = dirt_part
 
-function newDirtPart(n)
+function NewDirtPart(n)
 	n.type = ENT_DIRT_PART
 	n.width = 8
 	n.height = 8

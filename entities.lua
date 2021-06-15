@@ -22,7 +22,7 @@ DIR_DOWN  = 2
 DIR_LEFT  = 3
 DIR_RIGHT = 4
 
-function newUID()
+function NewUID()
 	LAST_UID = LAST_UID + 1
 	return LAST_UID
 end

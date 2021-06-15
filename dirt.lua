@@ -1,7 +1,7 @@
 local dirt = {}
 dirt.__index = dirt
 
-function newDirt(n)
+function NewDirt(n)
 	n.type = ENT_DIRT
 	n.width = 16
 	n.height = 16
@@ -16,10 +16,10 @@ end
 
 function dirt:die()
 	SFX_dirt_die:play()
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y,xspeed=0.5}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x,y=self.y,xspeed=-0.5}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x+8,y=self.y,xspeed=0.5}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
 	solid_remove(self)
 end
 

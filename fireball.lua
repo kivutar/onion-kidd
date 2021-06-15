@@ -1,7 +1,7 @@
 local fireball = {}
 fireball.__index = fireball
 
-function newFireball(n)
+function NewFireball(n)
 	n.type = ENT_FIREBALL
 	n.width = 8
 	n.height = 8
@@ -11,7 +11,7 @@ function newFireball(n)
 		n.xspeed = 5
 	end
 
-	n.anim = newAnimation(IMG_fireball, 16, 16, 1, 10)
+	n.anim = NewAnimation(IMG_fireball, 16, 16, 1, 10)
 
 	return setmetatable(n, fireball)
 end
@@ -35,7 +35,7 @@ end
 
 function fireball:die()
 	-- SFX_explode:play()
-	-- table.insert(EFFECTS, newFireballexp({uid=newUID(),x=self.x,y=self.y}))
+	-- table.insert(EFFECTS, NewFireballexp({uid=NewUID(),x=self.x,y=self.y}))
 	entity_remove(self)
 end
 

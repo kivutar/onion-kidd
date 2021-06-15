@@ -1,7 +1,7 @@
 local croco = {}
 croco.__index = croco
 
-function newCroco(n)
+function NewCroco(n)
 	n.type = ENT_CROCO
 	n.width = 16
 	n.height = 16
@@ -19,12 +19,12 @@ function newCroco(n)
 
 	n.animations = {
 		run = {
-			[DIR_LEFT]  = newAnimation(IMG_croco_run_left,  24, 24, 1, 10),
-			[DIR_RIGHT] = newAnimation(IMG_croco_run_right, 24, 24, 1, 10)
+			[DIR_LEFT]  = NewAnimation(IMG_croco_run_left,  24, 24, 1, 10),
+			[DIR_RIGHT] = NewAnimation(IMG_croco_run_right, 24, 24, 1, 10)
 		},
 		die = {
-			[DIR_LEFT]  = newAnimation(IMG_croco_die_left,  24, 24, 1, 10),
-			[DIR_RIGHT] = newAnimation(IMG_croco_die_right, 24, 24, 1, 10)
+			[DIR_LEFT]  = NewAnimation(IMG_croco_die_left,  24, 24, 1, 10),
+			[DIR_RIGHT] = NewAnimation(IMG_croco_die_right, 24, 24, 1, 10)
 		},
 	}
 

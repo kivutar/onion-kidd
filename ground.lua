@@ -1,7 +1,7 @@
 local ground = {}
 ground.__index = ground
 
-function newGround(n)
+function NewGround(n)
 	n.type = ENT_GROUND
 	n.width = 16
 	n.height = 16

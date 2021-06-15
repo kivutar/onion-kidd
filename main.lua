@@ -123,7 +123,7 @@ function love.load()
 	BGM = BGM_bgm
 	BGM:setLooping(true)
 
-	table.insert(ENTITIES, newTitle({}))
+	table.insert(ENTITIES, NewTitle({}))
 end
 
 function love.update(dt)

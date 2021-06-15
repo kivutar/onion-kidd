@@ -1,12 +1,12 @@
 local powerup_fireball = {}
 powerup_fireball.__index = powerup_fireball
 
-function newPowerupFireball(n)
+function NewPowerupFireball(n)
 	n.type = ENT_POWERUP_FIREBALL
 	n.width = 16
 	n.height = 16
 
-	n.anim = newAnimation(IMG_powerup_fireball, 16, 16, 1, 2)
+	n.anim = NewAnimation(IMG_powerup_fireball, 16, 16, 1, 2)
 
 	return setmetatable(n, powerup_fireball)
 end

@@ -1,7 +1,7 @@
 local powerblock = {}
 powerblock.__index = powerblock
 
-function newPowerblock(n)
+function NewPowerblock(n)
 	n.type = ENT_POWERBLOCK
 	n.width = 16
 	n.height = 16
@@ -16,11 +16,11 @@ end
 
 function powerblock:die()
 	SFX_dirt_die:play()
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y,xspeed=-0.5}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y,xspeed=0.5}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
-	table.insert(EFFECTS, newDirtPart({uid=newUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
-	table.insert(ENTITIES, newPowerupFireball({uid=newUID(),x=self.x,y=self.y}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x,y=self.y,xspeed=-0.5}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x+8,y=self.y,xspeed=0.5}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x,y=self.y+8,xspeed=-0.25}))
+	table.insert(EFFECTS, NewDirtPart({uid=NewUID(),x=self.x+8,y=self.y+8,xspeed=0.25}))
+	table.insert(ENTITIES, NewPowerupFireball({uid=NewUID(),x=self.x,y=self.y}))
 	solid_remove(self)
 end
 

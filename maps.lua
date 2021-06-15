@@ -5,15 +5,15 @@ function load_map(m)
 	for y = 1, #MAP, 1 do
 		for x = 1, #MAP[y] do
 			if MAP[y][x] == 1 then
-				table.insert(SOLIDS, newGround({uid=newUID(),x=(x-1)*16,y=(y-1)*16}))
+				table.insert(SOLIDS, NewGround({uid=NewUID(),x=(x-1)*16,y=(y-1)*16}))
 			elseif MAP[y][x] == 2 then
-				table.insert(SOLIDS, newDirt({uid=newUID(),x=(x-1)*16,y=(y-1)*16}))
+				table.insert(SOLIDS, NewDirt({uid=NewUID(),x=(x-1)*16,y=(y-1)*16}))
 			elseif MAP[y][x] == 3 then
-				table.insert(SOLIDS, newStar({uid=newUID(),x=(x-1)*16,y=(y-1)*16}))
+				table.insert(SOLIDS, NewStar({uid=NewUID(),x=(x-1)*16,y=(y-1)*16}))
 			elseif MAP[y][x] == 4 then
-				table.insert(ENTITIES, newBird({uid=newUID(),x=(x-1)*16,y=(y-1)*16}))
+				table.insert(ENTITIES, NewBird({uid=NewUID(),x=(x-1)*16,y=(y-1)*16}))
 			elseif MAP[y][x] == 5 then
-				table.insert(SOLIDS, newPowerblock({uid=newUID(),x=(x-1)*16,y=(y-1)*16}))
+				table.insert(SOLIDS, NewPowerblock({uid=NewUID(),x=(x-1)*16,y=(y-1)*16}))
 			end
 		end
 	end
