@@ -21,8 +21,6 @@ function NewCharacter(n)
 	n.dead = false
 	n.ungrounded_time = 0
 
-	n.skin = "girl"
-
 	if n.skin == "turnip" then
 		n.animations = {
 			stand = {

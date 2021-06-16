@@ -32,8 +32,10 @@ function title:update(dt)
 
 			load_map(STAGES[STAGE])
 
-			CHAR1 = NewCharacter({uid=NewUID(),x=1*16,y=6*16,pad=1,direction=DIR_RIGHT})
+			CHAR1 = NewCharacter({uid=NewUID(),x=1*16,y=6*16,pad=1,skin="turnip",direction=DIR_RIGHT})
+			CHAR2 = NewCharacter({uid=NewUID(),x=2*16,y=6*16,pad=2,skin="girl",direction=DIR_RIGHT})
 			table.insert(ENTITIES, CHAR1)
+			table.insert(ENTITIES, CHAR2)
 
 			BGM:play()
 		end

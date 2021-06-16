@@ -179,6 +179,7 @@ function love.reset()
 	PHASE = nil
 	STAGE = 1
 	CHAR1 = nil
+	CHAR2 = nil
 	BGM:stop()
 	BGM = nil
 	LAST_UID = 0

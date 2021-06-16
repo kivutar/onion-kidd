@@ -13,6 +13,7 @@ MAP = {}
 PHASE = nil
 STAGE = 1
 CHAR1 = nil
+CHAR2 = nil
 BGM = nil
 LAST_UID = 0
 
