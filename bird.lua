@@ -63,7 +63,7 @@ function bird:update(dt)
 
 	self.anim = self.animations[self.stance][self.direction]
 	self.anim:update(dt)
-	solid_collisions(self)
+	SolidCollisions(self)
 end
 
 function bird:draw()

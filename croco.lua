@@ -34,8 +34,8 @@ function NewCroco(n)
 end
 
 function croco:on_the_ground()
-	return solid_at(self.x + 1, self.y + 16, self)
-		or solid_at(self.x + 15, self.y + 16, self)
+	return SolidAt(self.x + 1, self.y + 16, self)
+		or SolidAt(self.x + 15, self.y + 16, self)
 end
 
 function croco:die()
@@ -70,7 +70,7 @@ function croco:update(dt)
 
 	self.anim = self.animations[self.stance][self.direction]
 	self.anim:update(dt)
-	solid_collisions(self)
+	SolidCollisions(self)
 end
 
 function croco:draw()

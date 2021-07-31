@@ -91,8 +91,8 @@ function NewCharacter(n)
 end
 
 function character:on_the_ground()
-	return solid_at(self.x + 1, self.y + self.height)
-		or solid_at(self.x + self.width - 1, self.y + self.height)
+	return SolidAt(self.x + 1, self.y + self.height)
+		or SolidAt(self.x + self.width - 1, self.y + self.height)
 end
 
 function character:die()
@@ -289,7 +289,7 @@ function character:update(dt)
 
 	self.anim:update(dt)
 
-	solid_collisions(self)
+	SolidCollisions(self)
 
 	local newcamy = self.y - SCREEN_HEIGHT/2 + self.height/2
 	if newcamy > CAMERA.y then

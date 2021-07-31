@@ -38,7 +38,7 @@ function DetectCollisions()
 	end
 end
 
-function solid_collisions(e1)
+function SolidCollisions(e1)
 	for j = 1, #SOLIDS do
 		local e2 = SOLIDS[j]
 
@@ -73,7 +73,7 @@ function solid_collisions(e1)
 	end
 end
 
-function solid_at(x, y, exclude)
+function SolidAt(x, y, exclude)
 	for i = 1, #SOLIDS do
 		local e = SOLIDS[i];
 
@@ -87,7 +87,7 @@ function solid_at(x, y, exclude)
 	return false;
 end
 
-function ground_at(x, y)
+function GroundAt(x, y)
 	for i = 1, #SOLIDS do
 		local e = SOLIDS[i];
 
@@ -101,7 +101,7 @@ function ground_at(x, y)
 	return false;
 end
 
-function bridge_at(x, y)
+function BridgeAt(x, y)
 	for i = 1, #SOLIDS do
 		local e = SOLIDS[i];
 
@@ -115,7 +115,7 @@ function bridge_at(x, y)
 	return false;
 end
 
-function object_collide(entity, type)
+function ObjectCollide(entity, type)
 	for i = 1, #ENTITIES do
 		for j = 1, #ENTITIES do
 			if j ~= i then

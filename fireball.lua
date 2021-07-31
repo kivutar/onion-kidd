@@ -26,7 +26,7 @@ function fireball:update(dt)
 	self.x = self.x + self.xspeed
 
 	self.anim:update(dt)
-	solid_collisions(self)
+	SolidCollisions(self)
 end
 
 function fireball:draw()

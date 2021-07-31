@@ -246,7 +246,6 @@ function love.unserialize(data, size)
 	CHAR1 = nil
 	CHAR2 = nil
 	BGM:stop()
-	--BGM = nil
 	LAST_UID = 0
 	HAS_FIREBALL = false
 	POINTS = 0
@@ -261,7 +260,6 @@ function love.unserialize(data, size)
 	CAMERA = state.CAMERA
 	PHASE = state.PHASE
 	STAGE = state.STAGE
-	--BGM = state.BGM
 	if state.BGMplaying then BGM:play() else BGM:stop() end
 	BGM:seek(state.BGMsamples, "samples")
 	LAST_UID = state.LAST_UID
@@ -286,6 +284,8 @@ function love.unserialize(data, size)
 			ENTITIES[i] = NewTitle({})
 		elseif state.ENTITIES[i].type == ENT_BIRD then
 			ENTITIES[i] = NewBird({})
+		elseif state.ENTITIES[i].type == ENT_CROCO then
+			ENTITIES[i] = NewCroco({})
 		elseif state.ENTITIES[i].type == ENT_MONEY then
 			ENTITIES[i] = NewMoney({})
 		elseif state.ENTITIES[i].type == ENT_POWERUP_FIREBALL then

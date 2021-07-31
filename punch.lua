@@ -13,7 +13,7 @@ end
 function punch:update(dt)
 	self.t = self.t - 1
 	if self.t <= 0 then self:die() end
-	solid_collisions(self)
+	SolidCollisions(self)
 end
 
 function punch:die()
