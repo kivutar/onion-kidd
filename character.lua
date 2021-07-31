@@ -127,7 +127,6 @@ function character:update(dt)
 			EFFECTS = {}
 			MAP = {}
 			LAST_UID = 0
-			HAS_FIREBALL = false
 			POINTS = 0
 			table.insert(ENTITIES, NewTitle({}))
 		end
@@ -182,7 +181,7 @@ function character:update(dt)
 	end
 
 	if self.DO_ATTACK == 1 then
-		if HAS_FIREBALL then
+		if self.hasFireball then
 			SFX_fireball:play()
 			if self.direction == DIR_LEFT then
 				table.insert(ENTITIES, NewFireball({uid=NewUID(),x=self.x-8,y=self.y+4,direction=self.direction}))
@@ -340,7 +339,7 @@ function character:on_collide(e1, e2, dx, dy)
 		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="500"}))
 		POINTS = POINTS + 500
 		EntityRemove(e2)
-		HAS_FIREBALL = true
+		self.hasFireball = true
 	end
 end
 
@@ -363,6 +362,7 @@ function character:serialize()
 		stance = self.stance,
 		DO_JUMP = self.DO_JUMP,
 		DO_ATTACK = self.DO_ATTACK,
+		hasFireball = self.hasFireball,
 	}
 end
 
@@ -384,4 +384,5 @@ function character:unserialize(n)
 	self.stance = n.stance
 	self.DO_JUMP = n.DO_JUMP
 	self.DO_ATTACK = n.DO_ATTACK
+	self.hasFireball = n.hasFireball
 end

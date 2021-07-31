@@ -182,7 +182,6 @@ function love.reset()
 	BGM:stop()
 	BGM = nil
 	LAST_UID = 0
-	HAS_FIREBALL = false
 	POINTS = 0
 	CAMERA = {
 		x = 0,
@@ -208,7 +207,6 @@ function love.serialize(size)
 	state.BGMplaying = BGM:isPlaying()
 	state.BGMsamples = BGM:tell("samples")
 	state.LAST_UID = LAST_UID
-	state.HAS_FIREBALL = HAS_FIREBALL
 	state.POINTS = POINTS
 
 	state.SOLIDS = {}
@@ -247,7 +245,6 @@ function love.unserialize(data, size)
 	CHAR2 = nil
 	BGM:stop()
 	LAST_UID = 0
-	HAS_FIREBALL = false
 	POINTS = 0
 	CAMERA = {
 		x = 0,
@@ -263,7 +260,6 @@ function love.unserialize(data, size)
 	if state.BGMplaying then BGM:play() else BGM:stop() end
 	BGM:seek(state.BGMsamples, "samples")
 	LAST_UID = state.LAST_UID
-	HAS_FIREBALL = state.HAS_FIREBALL
 	POINTS = state.POINTS
 
 	for i=1, #state.SOLIDS do
