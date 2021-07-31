@@ -1,4 +1,4 @@
-function detect_collisions()
+function DetectCollisions()
 	for i = 1, #ENTITIES do
 		for j = 1, #ENTITIES do
 			if j ~= i then

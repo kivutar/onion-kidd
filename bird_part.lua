@@ -38,6 +38,7 @@ function bird_part:serialize()
 		yspeed = self.yspeed,
 		yaccel = self.yaccel,
 		xspeed = self.xspeed,
+		t = self.t
 	}
 end
 
@@ -49,4 +50,5 @@ function bird_part:unserialize(n)
 	self.yspeed = n.yspeed
 	self.yaccel = n.yaccel
 	self.xspeed = n.xspeed
+	self.t = n.t
 end

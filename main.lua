@@ -139,7 +139,7 @@ function love.update(dt)
 		end
 	end
 
-	detect_collisions()
+	DetectCollisions()
 end
 
 function love.draw()
@@ -171,7 +171,6 @@ function love.draw()
 end
 
 function love.reset()
-	print("reset")
 	STATE = {}
 	SOLIDS = {}
 	ENTITIES = {}
