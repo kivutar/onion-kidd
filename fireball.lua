@@ -36,7 +36,7 @@ end
 function fireball:die()
 	-- SFX_explode:play()
 	-- table.insert(EFFECTS, NewFireballexp({uid=NewUID(),x=self.x,y=self.y}))
-	entity_remove(self)
+	EntityRemove(self)
 end
 
 function fireball:on_collide(e1, e2, dx, dy)

@@ -20,7 +20,7 @@ function bird_part:update(dt)
 	self.yspeed = self.yspeed + self.yaccel
 	self.x = self.x + self.xspeed
 	self.y = self.y + self.yspeed
-	if self.y > CAMERA.y+SCREEN_HEIGHT then effect_remove(self) end
+	if self.y > CAMERA.y+SCREEN_HEIGHT then EffectRemove(self) end
 end
 
 function bird_part:draw()

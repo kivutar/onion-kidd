@@ -1,7 +1,7 @@
 local punch = {}
 punch.__index = punch
 
-function newPunch(n)
+function NewPunch(n)
 	n.type = ENT_PUNCH
 	n.width = 16
 	n.height = 16
@@ -17,7 +17,7 @@ function punch:update(dt)
 end
 
 function punch:die()
-	entity_remove(self)
+	EntityRemove(self)
 end
 
 function punch:on_collide(e1, e2, dx, dy)

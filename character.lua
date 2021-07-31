@@ -115,7 +115,7 @@ function character:update(dt)
 		self.anim = self.animations[self.stance][self.direction]
 		self.anim:update(dt)
 		if self.y > CAMERA.y+SCREEN_HEIGHT then
-			entity_remove(self)
+			EntityRemove(self)
 			CAMERA = {
 				x = 0,
 				y = 0,
@@ -192,9 +192,9 @@ function character:update(dt)
 		else
 			SFX_punch:play()
 			if self.direction == DIR_LEFT then
-				table.insert(ENTITIES, newPunch({uid=NewUID(),x=self.x-16,y=self.y,direction=self.direction}))
+				table.insert(ENTITIES, NewPunch({uid=NewUID(),x=self.x-16,y=self.y,direction=self.direction}))
 			else
-				table.insert(ENTITIES, newPunch({uid=NewUID(),x=self.x+self.width,y=self.y,direction=self.direction}))
+				table.insert(ENTITIES, NewPunch({uid=NewUID(),x=self.x+self.width,y=self.y,direction=self.direction}))
 			end
 		end
 	end
@@ -334,12 +334,12 @@ function character:on_collide(e1, e2, dx, dy)
 		SFX_gem:play()
 		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="100"}))
 		POINTS = POINTS + 100
-		entity_remove(e2)
+		EntityRemove(e2)
 	elseif e2.type == ENT_POWERUP_FIREBALL then
 		SFX_powerup:play()
 		table.insert(EFFECTS, NewNotif({uid=NewUID(),x=e2.x, y=e2.y, text="500"}))
 		POINTS = POINTS + 500
-		entity_remove(e2)
+		EntityRemove(e2)
 		HAS_FIREBALL = true
 	end
 end

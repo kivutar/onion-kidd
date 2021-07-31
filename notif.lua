@@ -19,7 +19,7 @@ function notif:update(dt)
 	self.y = self.y + self.yspeed
 
 	if self.t >= 60 then
-		effect_remove(self)
+		EffectRemove(self)
 	end
 end
 

@@ -27,7 +27,7 @@ function NewUID()
 	return LAST_UID
 end
 
-function effect_remove(e)
+function EffectRemove(e)
 	for i=1, #EFFECTS do
 		if EFFECTS[i] == e then
 			table.remove(EFFECTS, i)
@@ -35,7 +35,7 @@ function effect_remove(e)
 	end
 end
 
-function entity_remove(e)
+function EntityRemove(e)
 	for i=1, #ENTITIES do
 		if ENTITIES[i] == e then
 			table.remove(ENTITIES, i)
@@ -43,7 +43,7 @@ function entity_remove(e)
 	end
 end
 
-function solid_remove(e)
+function SolidRemove(e)
 	for i=1, #SOLIDS do
 		if SOLIDS[i] == e then
 			table.remove(SOLIDS, i)

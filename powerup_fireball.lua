@@ -20,7 +20,7 @@ function powerup_fireball:draw()
 end
 
 function powerup_fireball:die()
-	entity_remove(self)
+	EntityRemove(self)
 end
 
 function powerup_fireball:serialize()
