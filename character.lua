@@ -21,7 +21,7 @@ function NewCharacter(n)
 	n.dead = false
 	n.ungrounded_time = 0
 
-	if n.skin == "turnip" then
+	if n.pad == 1 then
 		n.animations = {
 			stand = {
 				[DIR_LEFT]  = NewAnimation(IMG_turnip_stand_left,  24, 24, 2, 10),
@@ -52,7 +52,7 @@ function NewCharacter(n)
 				[DIR_RIGHT] = NewAnimation(IMG_turnip_die_right, 24, 24, 1, 10)
 			},
 		}
-	elseif n.skin == "girl" then
+	elseif n.pad == 2 then
 		n.animations = {
 			stand = {
 				[DIR_LEFT]  = NewAnimation(IMG_girl_stand_left,  24, 24, 2, 10),
@@ -359,7 +359,6 @@ function character:serialize()
 		ko = self.ko,
 		dead_t = self.dead_t,
 		ungrounded_time = self.ungrounded_time,
-		skin = self.skin,
 		dead = self.dead,
 		stance = self.stance,
 		DO_JUMP = self.DO_JUMP,
@@ -381,7 +380,6 @@ function character:unserialize(n)
 	self.ko = n.ko
 	self.dead_t = n.dead_t
 	self.ungrounded_time = n.ungrounded_time
-	self.skin = n.skin
 	self.dead = n.dead
 	self.stance = n.stance
 	self.DO_JUMP = n.DO_JUMP

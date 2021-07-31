@@ -34,7 +34,7 @@ local Source = {}
 Source.__index = Source
 Source.__newindex = function(_,k) error(('Cannot write key %s'):format(tostring(k))) end
 
-function newSource(target, how)
+function NewSource(target, how)
 	local s = {
 		_paused   = false,
 		target    = target,
@@ -120,6 +120,24 @@ end
 
 function Source:isStatic()
 	return self.how ~= "stream"
+end
+
+function Source:isPlaying()
+	for s in pairs(self.instances) do
+		return s:isPlaying()
+	end
+end
+
+function Source:tell(what)
+	for s in pairs(self.instances) do
+		return s:tell(what)
+	end
+end
+
+function Source:seek(n, what)
+	for s in pairs(self.instances) do
+		return s:seek(n, what)
+	end
 end
 
 -- getter/setter for looping, pitch and volume

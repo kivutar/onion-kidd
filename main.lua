@@ -20,6 +20,7 @@ require "powerup_fireball"
 require "punch"
 require "notif"
 require "bird_part"
+Json = require "json"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -101,21 +102,21 @@ function love.load()
 	IMG_bird_die_left = love.graphics.newImage("assets/bird_die_left.png")
 	IMG_bird_die_right = love.graphics.newImage("assets/bird_die_right.png")
 
-	BGM_bgm = newSource("assets/medallion.ogg", "stream")
+	BGM_bgm = NewSource("assets/medallion.ogg", "stream")
 
-	SFX_jump = newSource("assets/jump.wav", "static")
-	SFX_explode = newSource("assets/explode.wav", "static")
-	SFX_ko = newSource("assets/ko.wav", "static")
-	SFX_fireball = newSource("assets/fireball.wav", "static")
-	SFX_enemy_die = newSource("assets/enemy_die.wav", "static")
-	SFX_dirt_die = newSource("assets/dirt_die.wav", "static")
-	SFX_die = newSource("assets/die.wav", "static")
-	SFX_gem = newSource("assets/gem.wav", "static")
-	SFX_ok = newSource("assets/ok.wav", "static")
-	SFX_cross = newSource("assets/cross.wav", "static")
-	SFX_revive = newSource("assets/revive.wav", "static")
-	SFX_powerup = newSource("assets/powerup.wav", "static")
-	SFX_punch = newSource("assets/punch.wav", "static")
+	SFX_jump = NewSource("assets/jump.wav", "static")
+	SFX_explode = NewSource("assets/explode.wav", "static")
+	SFX_ko = NewSource("assets/ko.wav", "static")
+	SFX_fireball = NewSource("assets/fireball.wav", "static")
+	SFX_enemy_die = NewSource("assets/enemy_die.wav", "static")
+	SFX_dirt_die = NewSource("assets/dirt_die.wav", "static")
+	SFX_die = NewSource("assets/die.wav", "static")
+	SFX_gem = NewSource("assets/gem.wav", "static")
+	SFX_ok = NewSource("assets/ok.wav", "static")
+	SFX_cross = NewSource("assets/cross.wav", "static")
+	SFX_revive = NewSource("assets/revive.wav", "static")
+	SFX_powerup = NewSource("assets/powerup.wav", "static")
+	SFX_punch = NewSource("assets/punch.wav", "static")
 
 	FNT_points = love.graphics.newImageFont("assets/points.png", "0123456789")
 	FNT_letters = love.graphics.newImageFont("assets/letters.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.!?")
@@ -171,7 +172,6 @@ function love.draw()
 end
 
 function love.reset()
-	STATE = {}
 	SOLIDS = {}
 	ENTITIES = {}
 	EFFECTS = {}
@@ -190,4 +190,130 @@ function love.reset()
 	}
 
 	love.load()
+end
+
+function love.serializeSize()
+	return 200000
+end
+
+function love.serialize(size)
+    local state = {}
+
+	state.MAP = table.deep_copy(MAP)
+	state.CAMERA = CAMERA
+	state.PHASE = PHASE
+	state.STAGE = STAGE
+	state.CHAR1 = nil
+	state.CHAR2 = nil
+	state.BGMplaying = BGM:isPlaying()
+	state.BGMsamples = BGM:tell("samples")
+	state.LAST_UID = LAST_UID
+	state.HAS_FIREBALL = HAS_FIREBALL
+	state.POINTS = POINTS
+
+	state.SOLIDS = {}
+	for i=1, #SOLIDS do
+		if SOLIDS[i].serialize then
+			state.SOLIDS[i] = SOLIDS[i]:serialize()
+		end
+	end
+
+	state.ENTITIES = {}
+	for i=1, #ENTITIES do
+		if ENTITIES[i].serialize then
+			state.ENTITIES[i] = ENTITIES[i]:serialize()
+		end
+	end
+
+	state.EFFECTS = {}
+	for i=1, #EFFECTS do
+		if EFFECTS[i].serialize then
+			state.EFFECTS[i] = EFFECTS[i]:serialize()
+		end
+	end
+
+    return Json:encode(state)
+end
+
+function love.unserialize(data, size)
+    if data == nil then return end
+
+	SOLIDS = {}
+	ENTITIES = {}
+	EFFECTS = {}
+	PHASE = nil
+	STAGE = 1
+	CHAR1 = nil
+	CHAR2 = nil
+	BGM:stop()
+	--BGM = nil
+	LAST_UID = 0
+	HAS_FIREBALL = false
+	POINTS = 0
+	CAMERA = {
+		x = 0,
+		y = 0,
+	}
+
+    local state = Json:decode(data)
+
+	MAP = state.MAP
+	CAMERA = state.CAMERA
+	PHASE = state.PHASE
+	STAGE = state.STAGE
+	--BGM = state.BGM
+	if state.BGMplaying then BGM:play() else BGM:stop() end
+	BGM:seek(state.BGMsamples, "samples")
+	LAST_UID = state.LAST_UID
+	HAS_FIREBALL = state.HAS_FIREBALL
+	POINTS = state.POINTS
+
+	for i=1, #state.SOLIDS do
+		if state.SOLIDS[i].type == ENT_GROUND then
+			SOLIDS[i] = NewGround(state.SOLIDS[i])
+		elseif state.SOLIDS[i].type == ENT_DIRT then
+			SOLIDS[i] = NewDirt({})
+		elseif state.SOLIDS[i].type == ENT_STAR then
+			SOLIDS[i] = NewStar({})
+		elseif state.SOLIDS[i].type == ENT_POWERBLOCK then
+			SOLIDS[i] = NewPowerblock({})
+		end
+		SOLIDS[i]:unserialize(state.SOLIDS[i])
+	end
+
+	for i=1, #state.ENTITIES do
+		if state.ENTITIES[i].type == ENT_TITLE then
+			ENTITIES[i] = NewTitle({})
+		elseif state.ENTITIES[i].type == ENT_BIRD then
+			ENTITIES[i] = NewBird({})
+		elseif state.ENTITIES[i].type == ENT_MONEY then
+			ENTITIES[i] = NewMoney({})
+		elseif state.ENTITIES[i].type == ENT_POWERUP_FIREBALL then
+			ENTITIES[i] = NewPowerupFireball({})
+		elseif state.ENTITIES[i].type == ENT_FIREBALL then
+			ENTITIES[i] = NewFireball({})
+		elseif state.ENTITIES[i].type == ENT_PUNCH then
+			ENTITIES[i] = NewPunch({})
+		elseif state.ENTITIES[i].type == ENT_CHARACTER then
+			if state.ENTITIES[i].pad == 1 then
+				CHAR1 = NewCharacter({pad = 1})
+				ENTITIES[i] = CHAR1
+			elseif state.ENTITIES[i].pad == 2 then
+				CHAR2 = NewCharacter({pad = 2})
+				ENTITIES[i] = CHAR2
+			end
+		end
+		ENTITIES[i]:unserialize(state.ENTITIES[i])
+	end
+
+	for i=1, #state.EFFECTS do
+		if state.EFFECTS[i].type == ENT_NOTIF then
+			EFFECTS[i] = NewNotif({y=0})
+		elseif state.EFFECTS[i].type == ENT_DIRT_PART then
+			EFFECTS[i] = NewDirtPart({})
+		elseif state.EFFECTS[i].type == ENT_BIRD_PART then
+			EFFECTS[i] = NewBirdPart({})
+		end
+		EFFECTS[i]:unserialize(state.EFFECTS[i])
+	end
 end
