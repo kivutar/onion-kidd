@@ -30,7 +30,7 @@ function title:update(dt)
 			MAP = {}
 			LAST_UID = 0
 
-			load_map(STAGES[STAGE])
+			LoadMap(STAGES[STAGE])
 
 			CHAR1 = NewCharacter({uid=NewUID(),x=1*16,y=6*16,pad=1,skin="turnip",direction=DIR_RIGHT})
 			CHAR2 = NewCharacter({uid=NewUID(),x=2*16,y=6*16,pad=2,skin="girl",direction=DIR_RIGHT})

@@ -7,10 +7,10 @@ function NewGround(n)
 	n.height = 16
 	n.img = IMG_ground
 
-	local up = map_get(n.y/16, n.x/16+1)
-	local down = map_get(n.y/16+2, n.x/16+1)
-	local left = map_get(n.y/16+1, n.x/16)
-	local right = map_get(n.y/16+1, n.x/16+2)
+	local up = MapGet(n.y/16, n.x/16+1)
+	local down = MapGet(n.y/16+2, n.x/16+1)
+	local left = MapGet(n.y/16+1, n.x/16)
+	local right = MapGet(n.y/16+1, n.x/16+2)
 
 	if left ~= nil and left ~= 1 then n.img = IMG_ground_left end
 	if right ~= nil and right ~= 1 then n.img = IMG_ground_right end

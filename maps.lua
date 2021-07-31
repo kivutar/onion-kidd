@@ -1,5 +1,5 @@
 
-function load_map(m)
+function LoadMap(m)
 	MAP = m
 
 	for y = 1, #MAP, 1 do
@@ -19,7 +19,7 @@ function load_map(m)
 	end
 end
 
-function map_get(y, x)
+function MapGet(y, x)
 	if x < 0 or x > 20 then return nil end
 	if y < 0 or y > #MAP then return nil end
 	return MAP[y][x]
