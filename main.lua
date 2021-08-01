@@ -230,7 +230,7 @@ function love.serialize(size)
 		end
 	end
 
-    return Json:encode(state)
+    return Json.stringify(state)
 end
 
 function love.unserialize(data, size)
@@ -251,7 +251,7 @@ function love.unserialize(data, size)
 		y = 0,
 	}
 
-    local state = Json:decode(data)
+    local state = Json.parse(data)
 
 	MAP = state.MAP
 	CAMERA = state.CAMERA
