@@ -219,7 +219,7 @@ function character:update(dt)
 	self.y = self.y + self.yspeed
 
 	if self.x <= 0 then self.x = 0 end
-	if self.x >= SCREEN_WIDTH-self.width then self.x = SCREEN_WIDTH-self.width end
+	if self.x >= SCREEN_WIDTH+CAMERA.x-self.width then self.x = SCREEN_WIDTH+CAMERA.x-self.width end
 
 	-- decelerating
 	if  ((not JOY_RIGHT and self.xspeed > 0)
@@ -289,11 +289,20 @@ function character:update(dt)
 
 	SolidCollisions(self)
 
-	local newcamy = self.y - SCREEN_HEIGHT/2 + self.height/2
-	if newcamy > CAMERA.y then
-		CAMERA.y = self.y - SCREEN_HEIGHT/2 + self.height/2
-		if CAMERA.y <= 0 then CAMERA.y = 0 end
-		if CAMERA.y >= #MAP*16 - SCREEN_HEIGHT then CAMERA.y = #MAP*16 - SCREEN_HEIGHT end
+	if (MapIsVertical()) then
+		local newcamy = self.y - SCREEN_HEIGHT/2 + self.height/2
+		if newcamy > CAMERA.y then
+			CAMERA.y = self.y - SCREEN_HEIGHT/2 + self.height/2
+			if CAMERA.y <= 0 then CAMERA.y = 0 end
+			if CAMERA.y >= #MAP*16 - SCREEN_HEIGHT then CAMERA.y = #MAP*16 - SCREEN_HEIGHT end
+		end
+	else
+		local newcamx = self.x - SCREEN_WIDTH/2 + self.width/2
+		if newcamx > CAMERA.x then
+			CAMERA.x = self.x - SCREEN_WIDTH/2 + self.width/2
+			if CAMERA.x <= 0 then CAMERA.x = 0 end
+			if CAMERA.x >= #MAP[1]*16 - SCREEN_WIDTH then CAMERA.x = #MAP[1]*16 - SCREEN_WIDTH end
+		end
 	end
 end
 
