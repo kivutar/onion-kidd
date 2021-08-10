@@ -121,7 +121,6 @@ function character:update(dt)
 				y = 0,
 			}
 			BGM:stop()
-			STAGE = 1
 			ENTITIES = {}
 			SOLIDS = {}
 			EFFECTS = {}
@@ -340,6 +339,20 @@ function character:on_collide(e1, e2, dx, dy)
 		POINTS = POINTS + 500
 		EntityRemove(e2)
 		self.hasFireball = true
+	elseif e2.type == ENT_PIZZA then
+		SOLIDS = {}
+		ENTITIES = {}
+		EFFECTS = {}
+		PHASE = "inter"
+		CHAR1 = nil
+		CHAR2 = nil
+		LAST_UID = 0
+		POINTS = 0
+		CAMERA = {
+			x = 0,
+			y = 0,
+		}
+		table.insert(ENTITIES, NewInter({}))
 	end
 end
 
