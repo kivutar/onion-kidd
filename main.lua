@@ -20,6 +20,7 @@ require "powerup_fireball"
 require "punch"
 require "notif"
 require "bird_part"
+require "pizza"
 Json = require "json"
 
 function love.conf(t)
@@ -49,6 +50,7 @@ function love.load()
 	IMG_money = love.graphics.newImage("assets/money.png")
 	IMG_star = love.graphics.newImage("assets/star.png")
 	IMG_dirt = love.graphics.newImage("assets/dirt.png")
+	IMG_pizza = love.graphics.newImage("assets/pizza.png")
 	IMG_dirt_part = love.graphics.newImage("assets/dirt_part.png")
 	IMG_bird_part = love.graphics.newImage("assets/bird_part.png")
 	IMG_powerblock = love.graphics.newImage("assets/powerblock.png")
