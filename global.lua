@@ -16,6 +16,7 @@ CHAR1 = nil
 CHAR2 = nil
 BGM = nil
 LAST_UID = 0
+BGS = {}
 
 POINTS = 0
 

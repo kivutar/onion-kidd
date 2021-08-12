@@ -44,6 +44,7 @@ function love.load()
 	IMG_ground_left_up_down = love.graphics.newImage("assets/ground_left_up_down.png")
 	IMG_ground_right_up_down = love.graphics.newImage("assets/ground_right_up_down.png")
 	IMG_bg = love.graphics.newImage("assets/bg.png")
+	IMG_bg2 = love.graphics.newImage("assets/bg2.png")
 	IMG_bouncer = love.graphics.newImage("assets/bouncer.png")
 	IMG_bridge = love.graphics.newImage("assets/bridge.png")
 	IMG_fireball = love.graphics.newImage("assets/fireball.png")
@@ -147,7 +148,12 @@ function love.update(dt)
 end
 
 function love.draw()
-	love.graphics.draw(IMG_bg, 0, 0)
+	BGS = {
+		IMG_bg,
+		IMG_bg2,
+		IMG_bg,
+	}
+	love.graphics.draw(BGS[STAGE], 0, 0)
 
 	love.graphics.push()
 
