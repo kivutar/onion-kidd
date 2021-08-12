@@ -3,7 +3,7 @@ bird.__index = bird
 
 function NewBird(n)
 	n.type = ENT_BIRD
-	n.width = 28
+	n.width = 20
 	n.height = 16
 	n.direction = DIR_RIGHT
 	if n.direction == DIR_LEFT then
@@ -67,7 +67,7 @@ function bird:update(dt)
 end
 
 function bird:draw()
-	self.anim:draw(self.x, self.y)
+	self.anim:draw(self.x-4, self.y)
 end
 
 function bird:on_collide(e1, e2, dx, dy)
