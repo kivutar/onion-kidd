@@ -1,10 +1,10 @@
-OnionKidd.lutro:
-	zip -9 -r OnionKidd.lutro ./*
+Onion\ Kidd.lutro:
+	zip -9 -r Onion\ Kidd.lutro ./*
 
-OnionKidd.js:
-	python3 ~/emsdk/upstream/emscripten/tools/file_packager.py OnionKidd.data --preload . --js-output=OnionKidd.js
+Onion\ Kidd.js:
+	python3 ~/emsdk/upstream/emscripten/tools/file_packager.py Onion\ Kidd.data --preload . --js-output=Onion\ Kidd.js
 
 clean:
-	@$(RM) -f OnionKidd.*
+	@$(RM) -f Onion\ Kidd.*
 
 .PHONY: all clean
