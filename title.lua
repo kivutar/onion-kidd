@@ -9,13 +9,9 @@ function NewTitle(n)
 end
 
 function title:update(dt)
-	local JOY_START = love.joystick.isDown(1, RETRO_DEVICE_ID_JOYPAD_START)
+	local DO_START = Input.once(1, BTN_START)
 
-	if JOY_START then
-		self.PRESSED = self.PRESSED + 1
-	end
-
-	if self.PRESSED == 1 then
+	if DO_START then
 		SFX_ok:play()
 		self.t = 60
 	end

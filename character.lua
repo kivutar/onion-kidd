@@ -135,11 +135,11 @@ function character:update(dt)
 
 	local otg = self:on_the_ground()
 
-	local JOY_LEFT  = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_LEFT)
-	local JOY_RIGHT = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_RIGHT)
-	local JOY_DOWN = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_DOWN)
-	local JOY_B = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_B)
-	local JOY_A = love.joystick.isDown(self.pad, RETRO_DEVICE_ID_JOYPAD_A)
+	local JOY_LEFT  = Input.isDown(self.pad, BTN_LEFT)
+	local JOY_RIGHT = Input.isDown(self.pad, BTN_RIGHT)
+	local JOY_DOWN = Input.isDown(self.pad, BTN_DOWN)
+	local JOY_B = Input.isDown(self.pad, BTN_B)
+	local JOY_A = Input.isDown(self.pad, BTN_A)
 
 	-- gravity
 	self.yspeed = self.yspeed + self.yaccel

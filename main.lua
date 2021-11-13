@@ -23,6 +23,7 @@ require "bird_part"
 require "pizza"
 require "inter"
 Json = require "json"
+Input = require "input"
 
 function love.conf(t)
 	t.width  = SCREEN_WIDTH
@@ -132,6 +133,8 @@ function love.load()
 end
 
 function love.update(dt)
+	Input.update()
+
 	for i=1, #ENTITIES do
 		if ENTITIES[i] and ENTITIES[i].update then
 			ENTITIES[i]:update(dt)
