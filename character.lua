@@ -20,6 +20,7 @@ function NewCharacter(n)
 	n.dead_t = 0
 	n.dead = false
 	n.ungrounded_time = 0
+	n.has_truck = false
 
 	if n.pad == 1 then
 		n.animations = {
@@ -51,6 +52,10 @@ function NewCharacter(n)
 				[DIR_LEFT]  = NewAnimation(IMG_turnip_die_left,  24, 24, 1, 10),
 				[DIR_RIGHT] = NewAnimation(IMG_turnip_die_right, 24, 24, 1, 10)
 			},
+			truck = {
+				[DIR_LEFT]  = NewAnimation(IMG_truck, 32+8, 32, 1, 10),
+				[DIR_RIGHT] = NewAnimation(IMG_truck, 32+8, 32, 1, 10)
+			}
 		}
 	elseif n.pad == 2 then
 		n.animations = {
@@ -168,7 +173,7 @@ function character:update(dt)
 	end
 
 	-- variable jump height
-	if self.DO_JUMP > 0 and self.DO_JUMP <= 40 and self.yspeed < 0 then
+	if self.DO_JUMP > 0 and self.DO_JUMP <= 20 and self.yspeed < 0 then
 		self.yspeed =  self.yspeed - 0.1
 	end
 
@@ -278,6 +283,10 @@ function character:update(dt)
 		end
 	end
 
+	if self.has_truck then
+		self.stance = "truck"
+	end
+
 	local anim = self.animations[self.stance][self.direction]
 	-- always animate from first frame
 	if anim ~= self.anim then
@@ -291,23 +300,27 @@ function character:update(dt)
 
 	if (MapIsVertical()) then
 		local newcamy = self.y - SCREEN_HEIGHT/2 + self.height/2
-		if newcamy > CAMERA.y then
-			CAMERA.y = self.y - SCREEN_HEIGHT/2 + self.height/2
+		--if newcamy > CAMERA.y then
+			CAMERA.y = CAMERA.y - (CAMERA.y - newcamy) / 8
 			if CAMERA.y <= 0 then CAMERA.y = 0 end
 			if CAMERA.y >= #MAP*16 - SCREEN_HEIGHT then CAMERA.y = #MAP*16 - SCREEN_HEIGHT end
-		end
+		--end
 	else
 		local newcamx = self.x - SCREEN_WIDTH/2 + self.width/2
-		if newcamx > CAMERA.x then
-			CAMERA.x = self.x - SCREEN_WIDTH/2 + self.width/2
+		--if newcamx > CAMERA.x then
+			CAMERA.x = CAMERA.x - (CAMERA.x - newcamx) / 16
 			if CAMERA.x <= 0 then CAMERA.x = 0 end
 			if CAMERA.x >= #MAP[1]*16 - SCREEN_WIDTH then CAMERA.x = #MAP[1]*16 - SCREEN_WIDTH end
-		end
+		--end
 	end
 end
 
 function character:draw()
-	self.anim:draw(self.x-7, self.y-8)
+	if self.has_truck then
+		self.anim:draw(self.x-12, self.y-14)
+		return
+	end
+	self.anim:draw(self.x-7, self.y-7)
 end
 
 function character:on_collide(e1, e2, dx, dy)
@@ -348,6 +361,12 @@ function character:on_collide(e1, e2, dx, dy)
 		POINTS = POINTS + 500
 		EntityRemove(e2)
 		self.hasFireball = true
+	elseif e2.type == ENT_TRUCK then
+		SFX_powerup:play()
+		EntityRemove(e2)
+		self.has_truck = true
+	elseif (e2.type == ENT_STAR or e2.type == ENT_DIRT) and self.has_truck then
+		e2:die()
 	elseif e2.type == ENT_PIZZA then
 		SOLIDS = {}
 		ENTITIES = {}

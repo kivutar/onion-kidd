@@ -18,8 +18,13 @@ function NewGround(n)
 	if up ~= nil and up ~= 1 then n.img = IMG_ground_up end
 
 	if up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_up_down end
+
 	if left ~= nil and left ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_left_down end
 	if right ~= nil and right ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_right_down end
+
+	if left ~= nil and left ~= 1 and up ~= nil and up ~= 1 then n.img = IMG_ground_left_up end
+	if right ~= nil and right ~= 1 and up ~= nil and up ~= 1 then n.img = IMG_ground_right_up end
+
 	if left ~= nil and left ~= 1 and up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_left_up_down end
 	if right ~= nil and right ~= 1 and up ~= nil and up ~= 1 and down ~= nil and down ~= 1 then n.img = IMG_ground_right_up_down end
 

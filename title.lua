@@ -28,10 +28,10 @@ function title:update(dt)
 
 			LoadMap(STAGES[STAGE])
 
-			CHAR1 = NewCharacter({uid=NewUID(),x=1*16,y=6*16,pad=1,direction=DIR_RIGHT})
-			CHAR2 = NewCharacter({uid=NewUID(),x=2*16,y=6*16,pad=2,direction=DIR_RIGHT})
+			CHAR1 = NewCharacter({uid=NewUID(),x=1*16,y=5*16,pad=1,direction=DIR_RIGHT})
+			--CHAR2 = NewCharacter({uid=NewUID(),x=2*16,y=6*16,pad=2,direction=DIR_RIGHT})
 			table.insert(ENTITIES, CHAR1)
-			table.insert(ENTITIES, CHAR2)
+			--table.insert(ENTITIES, CHAR2)
 
 			BGM:play()
 		end

@@ -21,6 +21,7 @@ require "punch"
 require "notif"
 require "bird_part"
 require "pizza"
+require "truck"
 require "inter"
 Json = require "json"
 Input = require "input"
@@ -44,6 +45,8 @@ function love.load()
 	IMG_ground_right_down = love.graphics.newImage("assets/ground_right_down.png")
 	IMG_ground_left_up_down = love.graphics.newImage("assets/ground_left_up_down.png")
 	IMG_ground_right_up_down = love.graphics.newImage("assets/ground_right_up_down.png")
+	IMG_ground_left_up = love.graphics.newImage("assets/ground_left_up.png")
+	IMG_ground_right_up = love.graphics.newImage("assets/ground_right_up.png")
 	IMG_bg = love.graphics.newImage("assets/bg.png")
 	IMG_bg2 = love.graphics.newImage("assets/bg2.png")
 	IMG_bouncer = love.graphics.newImage("assets/bouncer.png")
@@ -58,6 +61,7 @@ function love.load()
 	IMG_bird_part = love.graphics.newImage("assets/bird_part.png")
 	IMG_powerblock = love.graphics.newImage("assets/powerblock.png")
 	IMG_powerup_fireball = love.graphics.newImage("assets/powerup_fireball.png")
+	IMG_truck = love.graphics.newImage("assets/truck.png")
 
 	IMG_turnip_stand_left = love.graphics.newImage("assets/turnip_stand_left.png")
 	IMG_turnip_stand_right = love.graphics.newImage("assets/turnip_stand_right.png")
